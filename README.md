@@ -39,4 +39,4 @@ Execução em pipeline Jenkins:
         Repository URL: https://github.com/braquintanilha/AutomationPractice.git
        
   Execução:
-    Acessar o job e em seguinda "Construir Agora" (ou "Build Now", caso inglês).
+    Acessar o job e em seguida "Construir Agora" (ou "Build Now", caso inglês).
