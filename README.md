@@ -4,21 +4,39 @@ Projeto de automação de testes funcionais end-to-end para e-commerce de testes
 
 Nesse projeto foi implementado o cenário de compra de um produto específico e validações do carrinho.
 
-Pré-requisito:
-NodeJS
+Execução via terminal:
+  Pré-requisito:
+    NodeJS
 
-Instalação de dependências:
-npm install cypress --save-dev
-npm install cypress-cucumber-preprocessor --save-dev
-npm install cypress-xpath --save-dev
-npm install mocha --save-dev
-npm install mochawesome --save-dev
-npm install mochawesome-merge --save-dev
-npm install mochawesome-report-generator --save-dev
+  Instalação de dependências:
+    npm install cypress --save-dev
+    npm install cypress-cucumber-preprocessor --save-dev
+    npm install cypress-xpath --save-dev
+    npm install mocha --save-dev
+    npm install mochawesome --save-dev
+    npm install mochawesome-merge --save-dev
+    npm install mochawesome-report-generator --save-dev
 
-Comandos de execução do projeto:
-npx cypress open - executa a interface gráfica do Cypress
-npm run test - executa todos os testes em modo headless com geração de reports
+  Comandos de execução do projeto:
+    npx cypress open - executa a interface gráfica do Cypress
+    npm run test - executa todos os testes em modo headless com geração de reports
 
-Os reports são gerados no seguinte diretório:
-*project/cypress/reports/mochareports
+  Os reports são gerados no seguinte diretório:
+   *project/cypress/reports/mochareports
+
+
+
+
+Execução em pipeline Jenkins:
+  Pré-requisito:
+    Jenkins com Docker 
+    
+  Configuração da pipeline:
+    Após criar um novo job do tipo Pipeline, acessar as configurações do job:
+      Em "Advanced Project Options" setar as seguintes configurações em "Pipeline":
+        Definition: Pipeline script from SCM
+        SCM: Git
+        Repository URL: https://github.com/braquintanilha/AutomationPractice.git
+       
+  Execução:
+    Acessar o job e em seguinda "Construir Agora" (ou "Build Now", caso inglês).
