@@ -10,7 +10,7 @@ pipeline {
         stage('Preparation') {
             steps {
                 sh 'npm install cypress'
-                sh 'npm install cucumber-pre-processor'
+                sh 'npm install cypress-cucumber-preprocessor'
             }
         }
 
