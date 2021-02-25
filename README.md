@@ -29,7 +29,7 @@ Execução via terminal:
 
 Execução em pipeline Jenkins:
   Pré-requisito:
-    Jenkins com Docker 
+    Jenkins com Docker (imagem jenkinsci/blueocean)
     
   Configuração da pipeline:
     Após criar um novo job do tipo Pipeline, acessar as configurações do job:
