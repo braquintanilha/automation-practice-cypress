@@ -9,13 +9,14 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                sh 'npm install'
+                sh 'npm install cypress'
+                sh 'npm install cucumber-pre-processor'
             }
         }
 
         stage('Testing') {
             steps {
-                sh 'npm run test'
+                sh 'npm run scripts'
             }
         }
     }
