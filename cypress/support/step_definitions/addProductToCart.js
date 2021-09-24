@@ -1,7 +1,7 @@
 /* global Given, When, Then */
 
-import HomePage from '../page_objects/homePage'
-import CartPage from '../page_objects/cartPage'
+import HomePage from '../pages/homePage'
+import CartPage from '../pages/cartPage'
 const homePage = new HomePage()
 const cartPage = new CartPage()
 
@@ -17,10 +17,17 @@ When('adiciono o primeiro produto comprável ao carrinho', () => {
 	homePage.adicionarPrimeiroProdutoAoCarrinho()
 });
 
-When('procedo para a conferência do pedido', () => {
+When('procedo para o checkout do pedido', () => {
 	homePage.acessarCarrinho()
 });
 
 Then('devo visualizar um produto {string} no carrinho', produto => {
-    cartPage.validaProdutoCarrinho(produto)
+	cartPage.getNomeProduto()
+		.should('contain', produto)
+		
+	cartPage.getQuantidadeProduto()
+		.should('have.value', 1)
+		
+	cartPage.getTituloCarrinho()
+		.should('contain', 'Shopping-cart summary')
 });
