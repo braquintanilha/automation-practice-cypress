@@ -1,3 +1,5 @@
 node_modules
-reports
-cypress/videos
+downloads
+videos
+.vscode
+*.mp4
