@@ -1,17 +1,17 @@
 const tituloCarrinho = '#cart_title'
-const nomeProduto = '//td[@class="cart_description"]/p/a'
+const nomeProduto = '.cart_item .product-name a'
 const quantidadeProduto = 'input.cart_quantity_input'
 
 class CartPage {
-    getTituloCarrinho() {
+    getCartTitle() {
         return cy.get(tituloCarrinho)
     }
 
-    getNomeProduto() {
-        return cy.xpath(nomeProduto)
+    getProductName() {
+        return cy.get(nomeProduto)
     }
 
-    getQuantidadeProduto() {
+    getQuantity() {
         return cy.get(quantidadeProduto)
     }
 }

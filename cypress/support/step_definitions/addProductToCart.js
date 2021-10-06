@@ -6,28 +6,31 @@ const homePage = new HomePage()
 const cartPage = new CartPage()
 
 Given('que estou na página inicial', () => {
-	homePage.acessarSite()
+	homePage.visit()
 });
 
-When('pesquiso pelo produto {string}', produto => {
-	homePage.pesquisarProduto(produto)
+When('pesquiso por {string}', produto => {
+	homePage.searchProduct(produto)
 });
 
 When('adiciono o primeiro produto comprável ao carrinho', () => {
-	homePage.adicionarPrimeiroProdutoAoCarrinho()
+	homePage.addFirstProductToCart()
 });
 
-When('procedo para o checkout do pedido', () => {
-	homePage.acessarCarrinho()
+When('procedo para a visualização do carrinho', () => {
+	homePage.proceedToCheckout()
 });
 
-Then('devo visualizar um produto {string} no carrinho', produto => {
-	cartPage.getNomeProduto()
+Then('devo visualizar 1 produto {string} no carrinho', produto => {
+	cartPage.getCartTitle()
+		.should('be.visible')
+		.should('contain', 'Shopping-cart summary')
+
+	cartPage.getProductName()
+		.should('be.visible')
 		.should('contain', produto)
 		
-	cartPage.getQuantidadeProduto()
+	cartPage.getQuantity()
+		.should('be.visible')
 		.should('have.value', 1)
-		
-	cartPage.getTituloCarrinho()
-		.should('contain', 'Shopping-cart summary')
 });

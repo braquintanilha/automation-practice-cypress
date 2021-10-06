@@ -1,30 +1,38 @@
-const inputPesquisa = '#search_query_top'
-const botaoPesquisa = 'button[name=submit_search]'
-const botaoAddProdutoCarrinho = '//ul[@class="product_list grid row"]/li[1]//a[@title="Add to cart"]'
-const botaoProceedCheckout = 'a[title="Proceed to checkout"]'
+const inputSearch = '#search_query_top'
+const btnSearch = 'button[name=submit_search]'
+const btnAddToCart = 'div.product-container .ajax_add_to_cart_button'
+const btnProceedCheckout = 'Proceed to checkout'
 
 class HomePage {
-    acessarSite() {
+    visit() {
         cy.visit('/')
     }
 
-    pesquisarProduto(produto) {
-        cy.get(inputPesquisa)
+    searchProduct(produto) {
+        cy.get(inputSearch)
             .should('be.visible')
             .type(produto)
-        cy.get(botaoPesquisa)
+        cy.get(btnSearch)
             .should('be.visible')
             .click()
     }
 
-    adicionarPrimeiroProdutoAoCarrinho() {
-        cy.xpath(botaoAddProdutoCarrinho)
+    addFirstProductToCart() {
+        cy.intercept({
+            method: 'POST',
+            pathname: '**/index.php',
+        }).as('postIndex')
+
+        cy.get(btnAddToCart)
+            .first()
             .should('be.visible')
-            .click()
+            .click()        
+        
+        cy.wait('@postIndex')
     }
 
-    acessarCarrinho() {
-        cy.get(botaoProceedCheckout)
+    proceedToCheckout() {
+        cy.contains(btnProceedCheckout)
             .should('be.visible')
             .click()
     }

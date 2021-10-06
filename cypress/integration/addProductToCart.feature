@@ -6,9 +6,16 @@ Funcionalidade: Adicionar um produto ao carrinho
     Para que eu possa adicioná-lo ao carrinho
 
     @AddProdutoCarrinho
-    Cenario: Adicionar um produto ao carrinho
+    Esquema do Cenário: Adicionar um produto ao carrinho
         Dado que estou na página inicial
-        Quando pesquiso pelo produto "Faded Short Sleeve"
+        Quando pesquiso por "<produto>"
         E adiciono o primeiro produto comprável ao carrinho
-        E procedo para o checkout do pedido
-        Então devo visualizar um produto "Faded Short Sleeve" no carrinho
+        E procedo para a visualização do carrinho
+        Então devo visualizar 1 produto "<produto>" no carrinho
+
+        Exemplos:
+
+        | produto              |
+        | Printed Summer Dress | 
+        | Faded Short Sleeve   |
+        | Blouse               |
